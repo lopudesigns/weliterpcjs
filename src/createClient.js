@@ -58,9 +58,12 @@ export default function createClient(address, options = {}) {
       .then(res => res.json())
       .then((res) => {
         if (res.error) {
+					console.error('res', res)
+					console.error('res.error', res.error)
           throw new JSONRPCError('Response contains error. See error property for details.', res.err);
         }
         if (!res.result) {
+					console.error('res', res)
           throw new JSONRPCNoResult("Response doesn't contain result");
         }
         return res;
